@@ -12,7 +12,7 @@ Public Class Form1
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         myPort = IO.Ports.SerialPort.GetPortNames()
-        portComboBox.Items.AddRange(myPort)   'add a change here for github testing
+        portComboBox.Items.AddRange(myPort)   'add a change for to test GitHub saving technique
         writeButton.Enabled = False
         closeButton.Enabled = False
         fanButton.Enabled = False
