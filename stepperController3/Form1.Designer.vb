@@ -40,20 +40,27 @@ Partial Class Form1
         Me.fanButton = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.SerialPort2 = New System.IO.Ports.SerialPort(Me.components)
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.inputTextBox2 = New System.Windows.Forms.RichTextBox()
+        Me.writeButton2 = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.outputTextBox2 = New System.Windows.Forms.RichTextBox()
         Me.SuspendLayout()
         '
         'writeButton
         '
-        Me.writeButton.Location = New System.Drawing.Point(263, 53)
+        Me.writeButton.Location = New System.Drawing.Point(206, 53)
         Me.writeButton.Name = "writeButton"
-        Me.writeButton.Size = New System.Drawing.Size(173, 51)
+        Me.writeButton.Size = New System.Drawing.Size(99, 42)
         Me.writeButton.TabIndex = 0
         Me.writeButton.Text = "WRITE"
         Me.writeButton.UseVisualStyleBackColor = True
         '
         'closeButton
         '
-        Me.closeButton.Location = New System.Drawing.Point(887, 315)
+        Me.closeButton.Location = New System.Drawing.Point(911, 368)
         Me.closeButton.Name = "closeButton"
         Me.closeButton.Size = New System.Drawing.Size(173, 51)
         Me.closeButton.TabIndex = 1
@@ -71,7 +78,7 @@ Partial Class Form1
         '
         'downButton
         '
-        Me.downButton.Location = New System.Drawing.Point(492, 254)
+        Me.downButton.Location = New System.Drawing.Point(15, 340)
         Me.downButton.Name = "downButton"
         Me.downButton.Size = New System.Drawing.Size(129, 41)
         Me.downButton.TabIndex = 3
@@ -80,7 +87,7 @@ Partial Class Form1
         '
         'upButton
         '
-        Me.upButton.Location = New System.Drawing.Point(492, 210)
+        Me.upButton.Location = New System.Drawing.Point(15, 296)
         Me.upButton.Name = "upButton"
         Me.upButton.Size = New System.Drawing.Size(129, 38)
         Me.upButton.TabIndex = 4
@@ -89,15 +96,15 @@ Partial Class Form1
         '
         'inputTextBox
         '
-        Me.inputTextBox.Location = New System.Drawing.Point(42, 53)
+        Me.inputTextBox.Location = New System.Drawing.Point(12, 53)
         Me.inputTextBox.Name = "inputTextBox"
-        Me.inputTextBox.Size = New System.Drawing.Size(215, 75)
+        Me.inputTextBox.Size = New System.Drawing.Size(188, 42)
         Me.inputTextBox.TabIndex = 5
         Me.inputTextBox.Text = ""
         '
         'outputTextBox
         '
-        Me.outputTextBox.Location = New System.Drawing.Point(42, 190)
+        Me.outputTextBox.Location = New System.Drawing.Point(12, 150)
         Me.outputTextBox.Name = "outputTextBox"
         Me.outputTextBox.Size = New System.Drawing.Size(215, 75)
         Me.outputTextBox.TabIndex = 6
@@ -114,9 +121,10 @@ Partial Class Form1
         '
         'baudComboBox
         '
+        Me.baudComboBox.AllowDrop = True
         Me.baudComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.baudComboBox.FormattingEnabled = True
-        Me.baudComboBox.Items.AddRange(New Object() {"9600"})
+        Me.baudComboBox.Items.AddRange(New Object() {"9600", "115200", "250000"})
         Me.baudComboBox.Location = New System.Drawing.Point(705, 123)
         Me.baudComboBox.Name = "baudComboBox"
         Me.baudComboBox.Size = New System.Drawing.Size(148, 24)
@@ -124,7 +132,7 @@ Partial Class Form1
         '
         'tuneTextBox
         '
-        Me.tuneTextBox.Location = New System.Drawing.Point(492, 170)
+        Me.tuneTextBox.Location = New System.Drawing.Point(15, 256)
         Me.tuneTextBox.Name = "tuneTextBox"
         Me.tuneTextBox.Size = New System.Drawing.Size(95, 34)
         Me.tuneTextBox.TabIndex = 9
@@ -133,7 +141,7 @@ Partial Class Form1
         'out
         '
         Me.out.AutoSize = True
-        Me.out.Location = New System.Drawing.Point(39, 170)
+        Me.out.Location = New System.Drawing.Point(9, 130)
         Me.out.Name = "out"
         Me.out.Size = New System.Drawing.Size(62, 17)
         Me.out.TabIndex = 10
@@ -142,7 +150,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(39, 33)
+        Me.Label1.Location = New System.Drawing.Point(12, 33)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(39, 17)
         Me.Label1.TabIndex = 11
@@ -168,7 +176,7 @@ Partial Class Form1
         '
         'fanButton
         '
-        Me.fanButton.Location = New System.Drawing.Point(896, 175)
+        Me.fanButton.Location = New System.Drawing.Point(897, 102)
         Me.fanButton.Name = "fanButton"
         Me.fanButton.Size = New System.Drawing.Size(163, 73)
         Me.fanButton.TabIndex = 14
@@ -178,17 +186,85 @@ Partial Class Form1
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(489, 150)
+        Me.Label4.Location = New System.Drawing.Point(12, 236)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(72, 17)
         Me.Label4.TabIndex = 15
         Me.Label4.Text = "Fine Tune"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(77, 9)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(225, 17)
+        Me.Label5.TabIndex = 16
+        Me.Label5.Text = "FIBER/I.S. PLATFORM FWD/BACK"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(389, 12)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(183, 17)
+        Me.Label6.TabIndex = 17
+        Me.Label6.Text = "BAR CONTROL FWD/BACK"
+        '
+        'inputTextBox2
+        '
+        Me.inputTextBox2.Location = New System.Drawing.Point(338, 56)
+        Me.inputTextBox2.Name = "inputTextBox2"
+        Me.inputTextBox2.Size = New System.Drawing.Size(188, 38)
+        Me.inputTextBox2.TabIndex = 18
+        Me.inputTextBox2.Text = ""
+        '
+        'writeButton2
+        '
+        Me.writeButton2.Location = New System.Drawing.Point(547, 56)
+        Me.writeButton2.Name = "writeButton2"
+        Me.writeButton2.Size = New System.Drawing.Size(104, 37)
+        Me.writeButton2.TabIndex = 19
+        Me.writeButton2.Text = "WRITE"
+        Me.writeButton2.UseVisualStyleBackColor = True
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(335, 36)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(39, 17)
+        Me.Label7.TabIndex = 20
+        Me.Label7.Text = "Input"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(335, 130)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(62, 17)
+        Me.Label8.TabIndex = 21
+        Me.Label8.Text = "Location"
+        '
+        'outputTextBox2
+        '
+        Me.outputTextBox2.Location = New System.Drawing.Point(338, 150)
+        Me.outputTextBox2.Name = "outputTextBox2"
+        Me.outputTextBox2.Size = New System.Drawing.Size(234, 75)
+        Me.outputTextBox2.TabIndex = 22
+        Me.outputTextBox2.Text = ""
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1106, 431)
+        Me.Controls.Add(Me.outputTextBox2)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.writeButton2)
+        Me.Controls.Add(Me.inputTextBox2)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.fanButton)
         Me.Controls.Add(Me.Label3)
@@ -229,5 +305,12 @@ Partial Class Form1
     Friend WithEvents fanButton As System.Windows.Forms.Button
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents SerialPort2 As System.IO.Ports.SerialPort
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents inputTextBox2 As System.Windows.Forms.RichTextBox
+    Friend WithEvents writeButton2 As System.Windows.Forms.Button
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents outputTextBox2 As System.Windows.Forms.RichTextBox
 
 End Class
