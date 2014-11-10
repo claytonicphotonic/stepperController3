@@ -11,7 +11,7 @@ Public Class Form1
     Public F As Boolean = False
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+        'add a small edit
         myPort = IO.Ports.SerialPort.GetPortNames()
         portComboBox.Items.AddRange(myPort)
         writeButton.Enabled = False
