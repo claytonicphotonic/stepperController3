@@ -9,6 +9,8 @@ Public Class Form1
     Dim myPort As Array
     Delegate Sub SetTextCallBack(ByVal [text] As String)
     Public F As Boolean = False
+    Public position As String
+
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'add a small edit
@@ -34,18 +36,27 @@ Public Class Form1
 
     Private Sub writeButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles writeButton.Click
         'This Button handles x-position of fiber/Integrating Sphere platform
-        outputTextBox.Clear()
-        SerialPort2.Write(inputTextBox.Text & vbCr)
-        Dim Incoming As String = SerialPort2.ReadLine()
-        RecievedText(Incoming)
-    End Sub
+        If FiberCheckBox.Checked And BarCheckBox.Checked Then
+            outputTextBox.Clear()
+            RecievedText("Run both stages??")
+        ElseIf BarCheckBox.Checked Then
+            outputTextBox.Clear()
+            SerialPort2.Write("GY" + inputTextBox.Text & vbCr)
+            '  Dim Incoming As String = SerialPort2.ReadLine()
+            '  RecievedText(Incoming)
+        ElseIf FiberCheckBox.Checked Then
+            outputTextBox.Clear()
+            SerialPort2.Write("GX" + inputTextBox.Text & vbCr)
+            '  Dim Incoming As String = SerialPort2.ReadLine()
+            '  RecievedText(Incoming)
+        ElseIf FiberCheckBox.Checked = False And BarCheckBox.Checked = False Then
+            outputTextBox.Clear()
+            RecievedText("You didnt choose a stage")
+        End If
+        SerialPort2.Write("M114" & vbCr)
+        position = SerialPort2.ReadLine()
 
-    Private Sub writeButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles writeButton2.Click
-        'This button will handle the COC/FOC/BAR platform x-position
-        outputTextBox2.Clear()
-        SerialPort2.Write(inputTextBox2.Text & vbCr)
-        Dim Incoming As String = SerialPort2.ReadLine()
-        RecievedText(Incoming)
+        RecievedText(position)
     End Sub
 
 
