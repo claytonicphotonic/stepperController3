@@ -109,7 +109,8 @@ Public Class Form1
 
     Private Sub HomeButton_Click(sender As Object, e As EventArgs) Handles HomeButton.Click
         outputTextBox.Clear()
-        SerialPort2.Write("G28" & vbCr)
+        SerialPort2.Write("GY0" & vbCr)
+        SerialPort2.Write("GX0" & vbCr)
         SerialPort2.Write("M114" & vbCr)
         Dim position As String = SerialPort2.ReadLine()
         RecievedText(position)
