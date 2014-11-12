@@ -10,7 +10,7 @@ Public Class Form1
     Delegate Sub SetTextCallBack(ByVal [text] As String)
     Public F As Boolean = False
     Public position As String
-
+    Dim mess_ammend As String
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'add a small edit
@@ -69,23 +69,48 @@ Public Class Form1
 
 
     Private Sub downButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles downButton.Click
-        TextBox2.Clear()
-        Dim delta As Double = Val(position) ' - Val(tuneTextBox)
-        'Dim cha As Double = Convert.ToDouble(tuneTextBox)
-        'SerialPort2.Write("delta" & vbCr)
+        'This will be for fine tuning the position after it is in place
+        SerialPort2.Write("M114" & vbCr)
+        position = SerialPort2.ReadLine()
+        If FiberCheckBox.Checked Then
+            mess_ammend = "GX"
+        ElseIf BarCheckBox.Checked Then
+            mess_ammend = "GY"
+        End If
 
-        'SerialPort2.Write("M114" & vbCr)
-        'position = SerialPort2.ReadLine()
-        'RecievedText(tuneTextBox.Text)
-        RecievedText(delta)
+        TextBox2.Clear()
+        Dim start As Integer = position.IndexOf("Y:") + 2
+        Dim delta As Integer = position.IndexOf("Z:") - start
+        Dim y_cha As String = position.Substring(start, delta)
+        Dim y_pos As Double = Convert.ToDouble(y_cha)                 'Now the position is converted to an integer value
+        Dim new_y_pos As Double = y_pos - Convert.ToDouble(tuneTextBox.Text)     'Subtract (downbutton) the amount you want to move by to the position
+        SerialPort2.Write(mess_ammend + new_y_pos.ToString & vbCr)
+        SerialPort2.Write("M114" & vbCr)
+        position = SerialPort2.ReadLine()
+        RecievedText(position)
 
     End Sub
 
     Private Sub upButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles upButton.Click
-        outputTextBox.Clear()
-        SerialPort2.Write(tuneTextBox.Text & vbCr)
-        Dim Incoming As String = SerialPort2.ReadLine()
-        RecievedText(Incoming)
+        'This will be for fine tuning the position after it is in place
+        SerialPort2.Write("M114" & vbCr)
+        position = SerialPort2.ReadLine()
+        If FiberCheckBox.Checked Then
+            mess_ammend = "GX"
+        ElseIf BarCheckBox.Checked Then
+            mess_ammend = "GY"
+        End If
+
+        TextBox.Clear()
+        Dim start As Integer = position.IndexOf("Y:") + 2
+        Dim delta As Integer = position.IndexOf("Z:") - start
+        Dim y_cha As String = position.Substring(start, delta)
+        Dim y_pos As Double = Convert.ToDouble(y_cha)                 'Now the position is converted to an integer value
+        Dim new_y_pos As Double = y_pos + Convert.ToDouble(tuneTextBox.Text)     'Subtract (downbutton) the amount you want to move by to the position
+        SerialPort2.Write(mess_ammend + new_y_pos.ToString & vbCr)
+        SerialPort2.Write("M114" & vbCr)
+        position = SerialPort2.ReadLine()
+        RecievedText(position)
     End Sub
 
     Private Sub closeButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles closeButton.Click
