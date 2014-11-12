@@ -42,13 +42,11 @@ Public Class Form1
         ElseIf BarCheckBox.Checked Then
             outputTextBox.Clear()
             SerialPort2.Write("GY" + inputTextBox.Text & vbCr)
-            '  Dim Incoming As String = SerialPort2.ReadLine()
-            '  RecievedText(Incoming)
+  
         ElseIf FiberCheckBox.Checked Then
             outputTextBox.Clear()
             SerialPort2.Write("GX" + inputTextBox.Text & vbCr)
-            '  Dim Incoming As String = SerialPort2.ReadLine()
-            '  RecievedText(Incoming)
+         
         ElseIf FiberCheckBox.Checked = False And BarCheckBox.Checked = False Then
             outputTextBox.Clear()
             RecievedText("You didnt choose a stage")
@@ -71,10 +69,16 @@ Public Class Form1
 
 
     Private Sub downButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles downButton.Click
-        outputTextBox.Clear()
-        SerialPort2.Write("-" + tuneTextBox.Text & vbCr)
-        Dim Incoming As String = SerialPort2.ReadLine()
-        RecievedText(Incoming)
+        TextBox2.Clear()
+        Dim delta As Double = Val(position) ' - Val(tuneTextBox)
+        'Dim cha As Double = Convert.ToDouble(tuneTextBox)
+        'SerialPort2.Write("delta" & vbCr)
+
+        'SerialPort2.Write("M114" & vbCr)
+        'position = SerialPort2.ReadLine()
+        'RecievedText(tuneTextBox.Text)
+        RecievedText(delta)
+
     End Sub
 
     Private Sub upButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles upButton.Click
@@ -103,4 +107,11 @@ Public Class Form1
     End Sub
 
 
+    Private Sub HomeButton_Click(sender As Object, e As EventArgs) Handles HomeButton.Click
+        outputTextBox.Clear()
+        SerialPort2.Write("G28" & vbCr)
+        SerialPort2.Write("M114" & vbCr)
+        Dim position As String = SerialPort2.ReadLine()
+        RecievedText(position)
+    End Sub
 End Class

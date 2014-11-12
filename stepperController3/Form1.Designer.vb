@@ -43,6 +43,8 @@ Partial Class Form1
         Me.BarCheckBox = New System.Windows.Forms.CheckBox()
         Me.FiberCheckBox = New System.Windows.Forms.CheckBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.RichTextBox()
+        Me.HomeButton = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'writeButton
@@ -193,11 +195,11 @@ Partial Class Form1
         Me.BarCheckBox.AutoSize = True
         Me.BarCheckBox.Checked = True
         Me.BarCheckBox.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.BarCheckBox.Location = New System.Drawing.Point(168, 81)
+        Me.BarCheckBox.Location = New System.Drawing.Point(12, 80)
         Me.BarCheckBox.Name = "BarCheckBox"
-        Me.BarCheckBox.Size = New System.Drawing.Size(93, 21)
+        Me.BarCheckBox.Size = New System.Drawing.Size(131, 21)
         Me.BarCheckBox.TabIndex = 23
-        Me.BarCheckBox.Text = "Bar Stage"
+        Me.BarCheckBox.Text = "Fiber/I.S.  Stage"
         Me.BarCheckBox.UseVisualStyleBackColor = True
         '
         'FiberCheckBox
@@ -205,11 +207,11 @@ Partial Class Form1
         Me.FiberCheckBox.AutoSize = True
         Me.FiberCheckBox.Checked = True
         Me.FiberCheckBox.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.FiberCheckBox.Location = New System.Drawing.Point(12, 81)
+        Me.FiberCheckBox.Location = New System.Drawing.Point(158, 80)
         Me.FiberCheckBox.Name = "FiberCheckBox"
-        Me.FiberCheckBox.Size = New System.Drawing.Size(127, 21)
+        Me.FiberCheckBox.Size = New System.Drawing.Size(93, 21)
         Me.FiberCheckBox.TabIndex = 24
-        Me.FiberCheckBox.Text = "Fiber/I.S. Stage"
+        Me.FiberCheckBox.Text = "Bar Stage"
         Me.FiberCheckBox.UseVisualStyleBackColor = True
         '
         'Label5
@@ -222,11 +224,30 @@ Partial Class Form1
         Me.Label5.TabIndex = 25
         Me.Label5.Text = "Select a motor"
         '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(423, 159)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(205, 67)
+        Me.TextBox2.TabIndex = 26
+        Me.TextBox2.Text = ""
+        '
+        'HomeButton
+        '
+        Me.HomeButton.Location = New System.Drawing.Point(914, 291)
+        Me.HomeButton.Name = "HomeButton"
+        Me.HomeButton.Size = New System.Drawing.Size(169, 57)
+        Me.HomeButton.TabIndex = 27
+        Me.HomeButton.Text = "HOME AXIS"
+        Me.HomeButton.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1106, 431)
+        Me.Controls.Add(Me.HomeButton)
+        Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.FiberCheckBox)
         Me.Controls.Add(Me.BarCheckBox)
@@ -273,5 +294,7 @@ Partial Class Form1
     Friend WithEvents BarCheckBox As System.Windows.Forms.CheckBox
     Friend WithEvents FiberCheckBox As System.Windows.Forms.CheckBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents TextBox2 As System.Windows.Forms.RichTextBox
+    Friend WithEvents HomeButton As System.Windows.Forms.Button
 
 End Class
