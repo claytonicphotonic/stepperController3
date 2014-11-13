@@ -47,6 +47,7 @@ Partial Class Form1
         Me.HomeButton = New System.Windows.Forms.Button()
         Me.goButton = New System.Windows.Forms.Button()
         Me.AxMG17Motor1 = New AxMG17MotorLib.AxMG17Motor()
+        Me.locButton = New System.Windows.Forms.Button()
         CType(Me.AxMG17Motor1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -107,7 +108,7 @@ Partial Class Form1
         '
         Me.outputTextBox.Location = New System.Drawing.Point(12, 226)
         Me.outputTextBox.Name = "outputTextBox"
-        Me.outputTextBox.Size = New System.Drawing.Size(215, 40)
+        Me.outputTextBox.Size = New System.Drawing.Size(188, 40)
         Me.outputTextBox.TabIndex = 6
         Me.outputTextBox.Text = ""
         '
@@ -254,11 +255,21 @@ Partial Class Form1
         Me.AxMG17Motor1.Size = New System.Drawing.Size(375, 271)
         Me.AxMG17Motor1.TabIndex = 29
         '
+        'locButton
+        '
+        Me.locButton.Location = New System.Drawing.Point(206, 226)
+        Me.locButton.Name = "locButton"
+        Me.locButton.Size = New System.Drawing.Size(97, 45)
+        Me.locButton.TabIndex = 30
+        Me.locButton.Text = "Get Loc."
+        Me.locButton.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1106, 431)
+        Me.Controls.Add(Me.locButton)
         Me.Controls.Add(Me.AxMG17Motor1)
         Me.Controls.Add(Me.goButton)
         Me.Controls.Add(Me.HomeButton)
@@ -312,5 +323,6 @@ Partial Class Form1
     Friend WithEvents HomeButton As System.Windows.Forms.Button
     Friend WithEvents goButton As System.Windows.Forms.Button
     Friend WithEvents AxMG17Motor1 As AxMG17MotorLib.AxMG17Motor
+    Friend WithEvents locButton As System.Windows.Forms.Button
 
 End Class

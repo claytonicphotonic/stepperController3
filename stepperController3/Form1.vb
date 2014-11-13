@@ -78,15 +78,22 @@ Public Class Form1
         'This will be for fine tuning the position after it is in place
         SerialPort2.Write("M114" & vbCr)
         position = SerialPort2.ReadLine()
+        Dim delta As Integer
+        Dim start As Integer
         If FiberCheckBox.Checked Then
             mess_ammend = "GX"
+            start = position.IndexOf("X:") + 2
+            delta = position.IndexOf("Y:") - start
         ElseIf BarCheckBox.Checked Then
             mess_ammend = "GY"
+            start = position.IndexOf("Y:") + 2
+            delta = position.IndexOf("Z:") - start
         End If
 
+        'ElseIf (String.IsNullOrEmpty(tuneTextBox.Text)) Then
+        '   RecievedText("Enter Step Size!")
+        'Else
         outputTextBox.Clear()
-        Dim start As Integer = position.IndexOf("Y:") + 2
-        Dim delta As Integer = position.IndexOf("Z:") - start
         Dim y_cha As String = position.Substring(start, delta)
         Dim y_pos As Double = Convert.ToDouble(y_cha)                 'Now the position is converted to an integer value
         Dim new_y_pos As Double = y_pos - Convert.ToDouble(tuneTextBox.Text)     'Subtract (downbutton) the amount you want to move by to the position
@@ -101,15 +108,22 @@ Public Class Form1
         'This will be for fine tuning the position after it is in place
         SerialPort2.Write("M114" & vbCr)
         position = SerialPort2.ReadLine()
+        Dim start As Integer
+        Dim delta As Integer
         If FiberCheckBox.Checked Then
             mess_ammend = "GX"
+            start = position.IndexOf("X:") + 2
+            delta = position.IndexOf("Y:") - start
+
         ElseIf BarCheckBox.Checked Then
             mess_ammend = "GY"
+            start = position.IndexOf("Y:") + 2
+            delta = position.IndexOf("Z:") - start
+            'ElseIf (String.IsNullOrEmpty(tuneTextBox.Text)) Then
+            '   RecievedText("Enter Step Size!")
         End If
 
         outputTextBox.Clear()
-        Dim start As Integer = position.IndexOf("X:") + 2
-        Dim delta As Integer = position.IndexOf("Y:") - start
         Dim x_cha As String = position.Substring(start, delta)
         Dim x_pos As Double = Convert.ToDouble(x_cha)                 'Now the position is converted to an integer value
         Dim new_y_pos As Double = x_pos + Convert.ToDouble(tuneTextBox.Text)     'Subtract (downbutton) the amount you want to move by to the position
@@ -117,6 +131,7 @@ Public Class Form1
         SerialPort2.Write("M114" & vbCr)
         position = SerialPort2.ReadLine()
         RecievedText(position)
+
     End Sub
 
     Private Sub closeButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles closeButton.Click
@@ -156,6 +171,14 @@ Public Class Form1
     End Sub
 
     Private Sub AxMG17Motor1_Enter(sender As Object, e As EventArgs) Handles AxMG17Motor1.Enter
+
+    End Sub
+
+    Private Sub locButton_Click(sender As Object, e As EventArgs) Handles locButton.Click
+        outputTextBox.Clear()
+        SerialPort2.Write("M114" & vbCr)
+        Dim position As String = SerialPort2.ReadLine()
+        RecievedText(position)
 
     End Sub
 End Class
