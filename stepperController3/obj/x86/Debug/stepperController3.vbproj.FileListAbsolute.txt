@@ -7,3 +7,8 @@ C:\Users\cbroman\Documents\Visual Studio 2010\Projects\stepperController3\steppe
 C:\Users\cbroman\Documents\Visual Studio 2010\Projects\stepperController3\stepperController3\obj\x86\Debug\stepperController3.exe
 C:\Users\cbroman\Documents\Visual Studio 2010\Projects\stepperController3\stepperController3\obj\x86\Debug\stepperController3.xml
 C:\Users\cbroman\Documents\Visual Studio 2010\Projects\stepperController3\stepperController3\obj\x86\Debug\stepperController3.pdb
+C:\Users\cbroman\Documents\Visual Studio 2010\Projects\stepperController3\stepperController3\bin\Debug\Interop.MG17MotorLib.dll
+C:\Users\cbroman\Documents\Visual Studio 2010\Projects\stepperController3\stepperController3\bin\Debug\AxInterop.MG17MotorLib.dll
+C:\Users\cbroman\Documents\Visual Studio 2010\Projects\stepperController3\stepperController3\obj\x86\Debug\Interop.MG17MotorLib.dll
+C:\Users\cbroman\Documents\Visual Studio 2010\Projects\stepperController3\stepperController3\obj\x86\Debug\AxInterop.MG17MotorLib.dll
+C:\Users\cbroman\Documents\Visual Studio 2010\Projects\stepperController3\stepperController3\obj\x86\Debug\stepperController3.vbproj.ResolveComReference.cache

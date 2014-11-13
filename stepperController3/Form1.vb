@@ -19,7 +19,9 @@ Public Class Form1
         writeButton.Enabled = False
         closeButton.Enabled = False
         fanButton.Enabled = False
-
+        HomeButton.Enabled = False
+        upButton.Enabled = False
+        downButton.Enabled = False
     End Sub
 
     Private Sub initButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles initButton.Click
@@ -31,6 +33,10 @@ Public Class Form1
         writeButton.Enabled = True
         closeButton.Enabled = True
         fanButton.Enabled = True
+        HomeButton.Enabled = True
+        upButton.Enabled = True
+        downButton.Enabled = True
+
     End Sub
 
 
@@ -78,7 +84,7 @@ Public Class Form1
             mess_ammend = "GY"
         End If
 
-        TextBox2.Clear()
+        outputTextBox.Clear()
         Dim start As Integer = position.IndexOf("Y:") + 2
         Dim delta As Integer = position.IndexOf("Z:") - start
         Dim y_cha As String = position.Substring(start, delta)
@@ -101,12 +107,12 @@ Public Class Form1
             mess_ammend = "GY"
         End If
 
-        TextBox.Clear()
-        Dim start As Integer = position.IndexOf("Y:") + 2
-        Dim delta As Integer = position.IndexOf("Z:") - start
-        Dim y_cha As String = position.Substring(start, delta)
-        Dim y_pos As Double = Convert.ToDouble(y_cha)                 'Now the position is converted to an integer value
-        Dim new_y_pos As Double = y_pos + Convert.ToDouble(tuneTextBox.Text)     'Subtract (downbutton) the amount you want to move by to the position
+        outputTextBox.Clear()
+        Dim start As Integer = position.IndexOf("X:") + 2
+        Dim delta As Integer = position.IndexOf("Y:") - start
+        Dim x_cha As String = position.Substring(start, delta)
+        Dim x_pos As Double = Convert.ToDouble(x_cha)                 'Now the position is converted to an integer value
+        Dim new_y_pos As Double = x_pos + Convert.ToDouble(tuneTextBox.Text)     'Subtract (downbutton) the amount you want to move by to the position
         SerialPort2.Write(mess_ammend + new_y_pos.ToString & vbCr)
         SerialPort2.Write("M114" & vbCr)
         position = SerialPort2.ReadLine()
@@ -119,6 +125,10 @@ Public Class Form1
         writeButton.Enabled = False
         closeButton.Enabled = False
         fanButton.Enabled = False
+        upButton.Enabled = False
+        downButton.Enabled = False
+        HomeButton.Enabled = False
+
     End Sub
 
     Private Sub fanButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles fanButton.Click
@@ -139,5 +149,13 @@ Public Class Form1
         SerialPort2.Write("M114" & vbCr)
         Dim position As String = SerialPort2.ReadLine()
         RecievedText(position)
+    End Sub
+
+    Private Sub goButton_Click(sender As Object, e As EventArgs) Handles goButton.Click
+
+    End Sub
+
+    Private Sub AxMG17Motor1_Enter(sender As Object, e As EventArgs) Handles AxMG17Motor1.Enter
+
     End Sub
 End Class

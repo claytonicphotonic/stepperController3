@@ -23,6 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.writeButton = New System.Windows.Forms.Button()
         Me.closeButton = New System.Windows.Forms.Button()
         Me.initButton = New System.Windows.Forms.Button()
@@ -43,8 +44,10 @@ Partial Class Form1
         Me.BarCheckBox = New System.Windows.Forms.CheckBox()
         Me.FiberCheckBox = New System.Windows.Forms.CheckBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.RichTextBox()
         Me.HomeButton = New System.Windows.Forms.Button()
+        Me.goButton = New System.Windows.Forms.Button()
+        Me.AxMG17Motor1 = New AxMG17MotorLib.AxMG17Motor()
+        CType(Me.AxMG17Motor1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'writeButton
@@ -224,14 +227,6 @@ Partial Class Form1
         Me.Label5.TabIndex = 25
         Me.Label5.Text = "Select a motor"
         '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(423, 159)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(205, 67)
-        Me.TextBox2.TabIndex = 26
-        Me.TextBox2.Text = ""
-        '
         'HomeButton
         '
         Me.HomeButton.Location = New System.Drawing.Point(914, 291)
@@ -241,13 +236,32 @@ Partial Class Form1
         Me.HomeButton.Text = "HOME AXIS"
         Me.HomeButton.UseVisualStyleBackColor = True
         '
+        'goButton
+        '
+        Me.goButton.Location = New System.Drawing.Point(382, 75)
+        Me.goButton.Name = "goButton"
+        Me.goButton.Size = New System.Drawing.Size(185, 60)
+        Me.goButton.TabIndex = 28
+        Me.goButton.Text = "READY GO!"
+        Me.goButton.UseVisualStyleBackColor = True
+        '
+        'AxMG17Motor1
+        '
+        Me.AxMG17Motor1.Enabled = True
+        Me.AxMG17Motor1.Location = New System.Drawing.Point(330, 148)
+        Me.AxMG17Motor1.Name = "AxMG17Motor1"
+        Me.AxMG17Motor1.OcxState = CType(resources.GetObject("AxMG17Motor1.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.AxMG17Motor1.Size = New System.Drawing.Size(375, 271)
+        Me.AxMG17Motor1.TabIndex = 29
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1106, 431)
+        Me.Controls.Add(Me.AxMG17Motor1)
+        Me.Controls.Add(Me.goButton)
         Me.Controls.Add(Me.HomeButton)
-        Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.FiberCheckBox)
         Me.Controls.Add(Me.BarCheckBox)
@@ -269,6 +283,7 @@ Partial Class Form1
         Me.Controls.Add(Me.writeButton)
         Me.Name = "Form1"
         Me.Text = "Form1"
+        CType(Me.AxMG17Motor1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -294,7 +309,8 @@ Partial Class Form1
     Friend WithEvents BarCheckBox As System.Windows.Forms.CheckBox
     Friend WithEvents FiberCheckBox As System.Windows.Forms.CheckBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents TextBox2 As System.Windows.Forms.RichTextBox
     Friend WithEvents HomeButton As System.Windows.Forms.Button
+    Friend WithEvents goButton As System.Windows.Forms.Button
+    Friend WithEvents AxMG17Motor1 As AxMG17MotorLib.AxMG17Motor
 
 End Class
